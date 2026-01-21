@@ -1,0 +1,182 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: #0b5ed7;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1100px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background: #0b5ed7;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #084298;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background: #f1f1f1;
+}
+
+/* FILTER SLIDE PANEL */
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.filter-body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+}
+
+.filter-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #0b5ed7, #084298);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.filter-btn:hover {
+    opacity: 0.9;
+}
+.delete-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.delete-btn:hover {
+    background: #bb2d3b;
+}
+.export-container {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.export-btn {
+    background: #198754;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.export-btn:hover {
+    background: #157347;
+}
+
+/* ============================= */
+/* RESPONSIVE DESIGN (MOBILE)   */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    /* Stack form fields vertically */
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* Inputs full width */
+    input {
+        width: 100%;
+    }
+
+    /* Buttons full width */
+    button,
+    .export-btn,
+    .pdf-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Card spacing */
+    .card {
+        padding: 15px;
+    }
+
+    /* Table responsiveness */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+}

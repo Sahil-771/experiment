@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filter Dairy Records</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Filter Dairy Records</h1>
+
+<div class="card">
+    <h2>Filter Data for Customer ID</h2>
+
+    <form method="POST">
+        <div class="form-row">
+            <div>
+                <label>Customer ID</label>
+                <input type="number" name="customer_id" value="{{ customer_id }}" required>
+            </div>
+
+            <div>
+                <label>Start Date</label>
+                <input type="date" name="start_date" value="{{ start_date }}" required>
+            </div>
+
+            <div>
+                <label>End Date</label>
+                <input type="date" name="end_date" value="{{ end_date }}" required>
+            </div>
+
+            <button type="submit">Filter</button>
+        </div>
+    </form>
+</div>
+
+{% if records %}
+<div class="card">
+    <h2>Filtered Entries for Customer ID {{ customer_id }}</h2>
+    <div class="export-container">
+    <form method="POST" action="/export">
+        <input type="hidden" name="customer_id" value="{{ customer_id }}">
+        <input type="hidden" name="start_date" value="{{ start_date }}">
+        <input type="hidden" name="end_date" value="{{ end_date }}">
+        <button type="submit" class="export-btn">
+            ⬇ Export to Excel
+        </button>
+    </form>
+    <form method="POST" action="/export-pdf" style="display:inline;">
+        <input type="hidden" name="customer_id" value="{{ customer_id }}">
+        <input type="hidden" name="start_date" value="{{ start_date }}">
+        <input type="hidden" name="end_date" value="{{ end_date }}">
+        <button type="submit" class="pdf-btn">
+            📄 Export to PDF
+        </button>
+    </form>
+
+    </div>
+
+    
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Amount (₹)</th>
+        </tr>
+
+        {% for row in records %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1][:10] }}</td>
+            <td>{{ row[2] }}</td>
+        </tr>
+        {% endfor %}
+
+        <tr class="total-row">
+            <td colspan="2"><strong>Total Amount</strong></td>
+            <td><strong>{{ total_amount }}</strong></td>
+        </tr>
+    </table>
+</div>
+{% endif %}
+
+</body>
+</html>
